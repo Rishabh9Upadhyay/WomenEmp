@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main_div {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+/* nav bar */
+.main_div .nav_bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* logo */
+.main_div .nav_bar .logo {
+    width: 150px;
+    height: 80px;
+    margin-left: 50px;
+}
+
+.main_div .nav_bar .logo a img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.main_div .nav_bar .items {
+    margin-right: 30px;
+}
+
+.main_div .nav_bar .items ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.main_div .nav_bar .items ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+.main_div .nav_bar .items ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.main_div .nav_bar .items ul li a:hover {
+    color: #9854e7;
+}
+
+.main_div .nav_bar .items ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #9854e7;
+    transition: all 0.3s ease;
+}
+
+.main_div .nav_bar .items ul li a:hover::before {
+    width: 100%;
+}
+
+/* search */
+.main_div .nav_bar .items ul li .input_div {
+    width: 250px;
+    display: flex;
+    gap: 8px;
+}
+
+.main_div .nav_bar .items ul li .input_div input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    outline: none;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+}
+
+.main_div .nav_bar .items ul li .input_div input[type="submit"] {
+    padding: 5px 7px;
+    font-size: 13px;
+    border: none;
+    font-weight: 600;
+    background: #9854e7;
+    color: aliceblue;
+    border-radius: 2px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+}
+
+.main_div .nav_bar .items ul li .input_div input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+/* login/logout */
+.main_div .nav_bar .items ul li .profile {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.main_div .nav_bar .items ul li .profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.main_div .nav_bar .items ul li ul {
+    position: absolute;
+    background: rgb(23, 31, 44);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+    right: -5px;
+    padding: 5px;
+    display: none;
+}
+
+.main_div .nav_bar .items ul li ul li {
+    width: 100%;
+    font-size: 15px;
+    padding: 5px 0;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-left: 0;
+    transition: all 0.3s linear;
+}
+
+.main_div .nav_bar .items ul li ul li:hover {
+    background: #3f4d5e;
+    cursor: pointer;
+}
+
+.main_div .nav_bar .items ul li:hover>ul,
+.main_div .nav_bar .items ul li .profile:hover+ul {
+    display: block;
+}
+
+/* hero bg  parrallax*/
+.main_div .bg_div
+{
+    width: 100%;
+    height: 100vh;
+    background:  linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,.6)),url('img/herobg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main_div .bg_div .hero_head h1
+{
+    font-size: 80px;
+    font-weight: 350;
+    color: #fff;
+    font-family: "Cormorant Garamond", serif;
+    text-align: center;
+}
+.main_div .bg_div .hero_head h1::selection
+{
+    background: #ec9c1c;
+}
+.main_div .bg_div .hero_head h1 span
+{
+    font-size: 90px;
+}
+.main_div .bg_div .hero_head h1 span::selection
+{
+    background: #ec9c1c;
+}
+.main_div .bg_div .hero_head h3
+{
+    max-width: 970px;
+    font-size: 30px;
+    font-weight: 400;
+    color: #fff;
+    font-family: "Cormorant Garamond", serif;
+    text-align: center;
+    text-align: center;
+    margin-top: 5px;
+}
+.main_div .bg_div .hero_head h3::selection
+{
+    background: #ec9c1c;
+}
+.main_div .bg_div button
+{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 15px 25px;
+    border: none;
+    margin-top: 20px;
+    background: #b81ef0;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* inspiration  section*/
+.main_div .inspiration
+{
+    width: 100%;
+    height: auto;
+}
+.main_div .inspiration .grid_head
+{
+    width: 100%;
+    margin: 20px auto;
+}
+.main_div .inspiration .grid_head h2
+{
+    text-align: center;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.main_div .inspiration .tag_line
+{
+    width: 50%;
+    margin: 30px 95px;
+}
+.main_div .inspiration .tag_line h3
+{
+    font-size: 50px;
+    font-weight: 300px;
+    letter-spacing: 1px;
+    font-family: "Cormorant Garamond", serif;
+}
+.main_div .inspiration .grid_img
+{
+    width: 90%;
+    height: auto;
+    display: grid;
+    grid-template-rows: repeat(2, 300px);
+    grid-template-columns: repeat(3, 1fr);
+    margin: 20px auto;
+    grid-gap: 20px;
+}
+.main_div .inspiration .grid_img .card
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+.main_div .inspiration .grid_img .card img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.main_div .inspiration .grid_img .card img:hover
+{
+    transform: scale(1.1);
+}
+
+.main_div .inspiration .grid_img .card .text_field
+{
+    width: 300px;
+    position: absolute;
+    left: 20px;
+    bottom: -150px;
+    transition: bottom 0.3s linear;
+    
+}
+.main_div .inspiration .grid_img .card .text_field p
+{
+    color: #fff;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main_div .inspiration .grid_img .card .text_field span
+{
+    color: #fff;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main_div .inspiration .grid_img .card:hover .text_field
+{
+    bottom: 10px;
+}
+.main_div .inspiration .grid_img .card:hover img
+{
+    filter: brightness(0.5);
+}
+
+/* communty forum */
+.main_div .comm_form
+{
+    width: 100%;
+    height: 130vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle,  rgba(115,12,50, 1) 5%, rgba(13,12,12,1) 60%);
+}
+
+.main_div .comm_form .box
+{
+    display: grid;
+    grid-template-rows: repeat(1, 400px);
+    grid-template-columns: repeat(2, 600px);
+    grid-gap: 50px;
+}
+.main_div .comm_form .box .s_box p
+{
+    font-size: 25px;
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+}
+.main_div .comm_form .box .s_box:nth-child(1)
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_div .comm_form .box .s_box:nth-child(2)
+{
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.5);
+    padding: 10px 25px 10px 25px;
+}
+.main_div .comm_form .box .s_box .heading_box
+{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.main_div .comm_form .box .s_box .heading_box h2
+{
+    text-align: center;
+    font-size: 25px;
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    color: #0f0f0f;
+}
+.main_div .comm_form .box .s_box .input_div
+{
+    margin: 10px auto;
+    width: 100%;
+    height: 200px;
+}
+.main_div .comm_form .box .s_box .input_div input
+{
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    margin: 10px auto;
+    font-size: 15px;
+}
+.main_div .comm_form .box .s_box .input_div textarea
+{
+    resize: none;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    font-size: 18px;
+}
+.main_div .comm_form .box .s_box .input_div textarea:focus
+{
+    outline-color: #890ef6;
+}
+.main_div .comm_form .box .s_box .input_div button
+{
+    position: absolute;
+    font-size: 20px;
+    border: none;
+    padding: 8px 20px;
+    right: 24px;
+    bottom: 12px;
+    background: blue;
+    color: #fff;
+    text-transform: capitalize;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+.main_div .blogs
+{
+    width: 100%;
+    height: 100vh;
+}
+
+
+
+/* footer */
+.main_div .footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 10px solid #000;
+}
+
+.main_div .footer .card {
+    flex: 1 1 250px;
+    height: 250px;
+    padding: 20px;
+    background: rgb(15, 15, 15);
+}
+
+.main_div .footer .card .heading_foot h2 {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.main_div .footer .card .contact .all_cont,
+.main_div .footer .card .address .all_cont {
+    margin-top: 20px;
+}
+
+.main_div .footer .card .contact .all_cont .common {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.main_div .footer .card .contact .all_cont .common i,
+.main_div .footer .card .address .all_cont .common i {
+    font-size: 15px;
+    color: #fff;
+}
+
+
+.main_div .footer .card .contact .all_cont .common span,
+.main_div .footer .card .address .all_cont .common span {
+    
+    font-size: 15px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+}
+
+.main_div .footer .card .what .all_cont .call ul li
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    margin-top: 10px;
+}
+
+.main_div .footer .card .contact .all_cont .social {
+    display: flex;
+    justify-content: center;
+}
+
+.main_div .footer .card .contact .all_cont .social a {
+    text-decoration: none;
+}
+
+.main_div .footer .card .contact .all_cont .social a i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.main_div .footer .card .contact .all_cont .social a i:hover
+{
+    color: blue;
+}
+
+.main_div .footer .card .address .all_cont .common .input_div
+{
+    margin-top: 20px;
+}
+.main_div .footer .card .address .all_cont .common .input_div input[type="text"]
+{
+    outline: none;
+    padding: 2px;
+}
+.main_div .footer .card .address .all_cont .common .input_div button
+{
+    padding: 3px 5px;
+    color: #fff;
+    background: #890ef6;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
