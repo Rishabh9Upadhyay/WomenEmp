@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles1.css">
+  <title>Women Empowerment Community</title>
+</head>
+<body>
+
+  <!-- Circular Add Post Button -->
+  <button class="add-post-btn" id="addPostBtn">+</button>
+
+  <!-- Community Section -->
+  <div class="community-section" id="communitySection">
+    <!-- Posts will be dynamically added here -->
+  </div>
+
+  <!-- Add Post Modal -->
+  <div class="modal" id="addPostModal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <form id="postForm">
+        <label for="userName">Your Name:</label>
+        <input type="text" id="userName" required>
+        <label for="postContent">Post Content:</label>
+        <textarea id="postContent" rows="4" required></textarea>
+        <button type="button" id="submitPostBtn">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Read More Modal -->
+  <!-- Dynamically created for each post, so no need to include it here -->
+
+  <script src="script1.js"></script>
+</body>
+</html>

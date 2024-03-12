@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap');
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.main_div
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#00a884 20%, #000 20%);
+}
+.main_div .main_box
+{
+    width: 65%;
+    height: 150vh;
+    background: #fff;
+    margin: 100px 0 60px 0;
+    display: flex;
+    flex-direction: column;
+}
+.main_div .main_box .box
+{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+.main_div .main_box .content
+{
+    width: 350px;
+    height: auto;
+    padding: 20px;
+    margin-top: 30px;
+}
+.main_div .main_box .box .content .heading
+{
+    width: 100%;
+}
+.main_div .main_box .box .content .heading h2
+{
+    text-align: center;
+    font-size: 30px;
+    margin: 0 0 10px;
+    font-weight: 500;
+    font-family: 'Mukta', sans-serif;
+    text-transform: uppercase;
+}
+/* only for recover page */
+.main_div .main_box .box .content .heading .recover
+{
+    font-size: 20px;
+}
+.main_div .main_box .box .content .recover_msg
+{
+    text-align: center;
+    font-size: 15px;
+    margin: 2.5px 0 5px 0;
+    font-weight: 500;
+    font-family: 'Mukta', sans-serif;
+}
+.main_div .main_box .content .alert_msg
+{
+    width: 100%;
+}
+.main_div .main_box .content .alert_msg p
+{
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Mukta', sans-serif;
+    margin: 5px 0;
+    color: #00a884;
+}
+.main_div .main_box .box .content .grup_div
+{
+    width: 100%;
+    margin: 15px 0;
+}
+.main_div .main_box .box .content .grup_div input
+{
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+}
+.main_div .main_box .box .content .grup_div input:focus,
+.main_div .main_box .box .content .grup_div input:active
+{
+    border: 1px solid #00a884;
+}
+.main_div .main_box .box .content input[type="submit"]
+{
+    padding: 10px 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    background: #008069;
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    margin-left: 50%;
+    margin-top: 10px;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    cursor: pointer;
+}
+.main_div .main_box .box .content .checkbox
+{
+    display: flex;
+}
+.main_div .main_box .box .content .checkbox input[type="checkbox"]
+{
+    margin-right: 5px;
+}
+
+/* background div */
+.main_div .main_box .bgbox
+{
+    width: 100%;
+    height: 40%;
+}
+.main_div .main_box .bgbox img
+{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+}
+.main_div .main_box .box .content p
+{
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    margin: 10px 0;
+}
+.main_div .main_box .box .content .forgot
+{
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+    margin: 10px 0;
+}
+.main_div .main_box .box .content .forgot a{
+    text-decoration: none;
+}
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+body
+{
+    height: 100%;
+}
+
+/* footer */
+.main_div .footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 10px solid #000;
+    position: fixed;
+    bottom: 0;
+}
+
+.main_div .footer .card {
+    flex: 1 1 250px;
+    height: 250px;
+    padding: 20px;
+    background: rgb(15, 15, 15);
+}
+
+.main_div .footer .card .heading_foot h2 {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.main_div .footer .card .contact .all_cont,
+.main_div .footer .card .address .all_cont {
+    margin-top: 20px;
+}
+
+.main_div .footer .card .contact .all_cont .common {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.main_div .footer .card .contact .all_cont .common i,
+.main_div .footer .card .address .all_cont .common i {
+    font-size: 15px;
+    color: #fff;
+}
+
+
+.main_div .footer .card .contact .all_cont .common span,
+.main_div .footer .card .address .all_cont .common span {
+    
+    font-size: 15px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+}
+
+.main_div .footer .card .what .all_cont .call ul li
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    margin-top: 10px;
+}
+
+.main_div .footer .card .contact .all_cont .social {
+    display: flex;
+    justify-content: center;
+}
+
+.main_div .footer .card .contact .all_cont .social a {
+    text-decoration: none;
+}
+
+.main_div .footer .card .contact .all_cont .social a i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.main_div .footer .card .contact .all_cont .social a i:hover
+{
+    color: blue;
+}
+
+.main_div .footer .card .address .all_cont .common .input_div
+{
+    margin-top: 20px;
+}
+.main_div .footer .card .address .all_cont .common .input_div input[type="text"]
+{
+    outline: none;
+    padding: 2px;
+}
+.main_div .footer .card .address .all_cont .common .input_div button
+{
+    padding: 3px 5px;
+    color: #fff;
+    background: #890ef6;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}

@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html
+{
+    height: 100%;
+}
+.main_div {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+/* nav bar */
+.main_div .nav_bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(40 59 73);
+}
+
+/* logo */
+.main_div .nav_bar .logo {
+    width: 150px;
+    height: 80px;
+    margin-left: 50px;
+}
+
+.main_div .nav_bar .logo a img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.main_div .nav_bar .items {
+    margin-right: 30px;
+}
+
+.main_div .nav_bar .items ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.main_div .nav_bar .items ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+.main_div .nav_bar .items ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.main_div .nav_bar .items ul li a:hover {
+    color: #9854e7;
+}
+
+.main_div .nav_bar .items ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #9854e7;
+    transition: all 0.3s ease;
+}
+
+.main_div .nav_bar .items ul li a:hover::before {
+    width: 100%;
+}
+/* login/logout */
+.main_div .nav_bar .items ul li .profile {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.main_div .nav_bar .items ul li .profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.main_div .nav_bar .items ul li ul {
+    position: absolute;
+    background: rgb(23, 31, 44);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+    right: -5px;
+    padding: 5px;
+    display: none;
+}
+
+.main_div .nav_bar .items ul li ul li {
+    width: 100%;
+    font-size: 15px;
+    padding: 5px 0;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-left: 0;
+    transition: all 0.3s linear;
+}
+
+.main_div .nav_bar .items ul li ul li:hover {
+    background: #3f4d5e;
+    cursor: pointer;
+}
+
+.main_div .nav_bar .items ul li:hover>ul,
+.main_div .nav_bar .items ul li .profile:hover+ul {
+    display: block;
+}
