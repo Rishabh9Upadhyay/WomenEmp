@@ -30,26 +30,21 @@
                     <li><a href="#">Faq</a></li>
                     <li><a href="#">Contacts</a></li>
                     <li><a href="/About">About</a></li>
-                    {{!-- <li>
-                        <div class="input_div">
-                            <input type="text" placeholder="search here...">
-                            <input type="submit" value="search">
-                        </div>
-                    </li> --}}
-                    {{!-- <li><a href="">login</a></li> --}}
-
                     {{#if user}}
-                    <li class="profile">
-                        <img src="./img/user.jpg" alt="user_img">
+                    <li>
+                        <div class="profile">
+                            <img src='./uploads/{{pimg}}' alt="user_img">
+                        </div>
                         <ul>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Sign Out</a></li>
+                            <li>profile</li>
+                            <li>sign out</li>
                         </ul>
                     </li>
                     {{else}}
-                    <li><a href="/signin">Sign In</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
+                    <li><a href="/signin">Signin</a></li>
+                    <li><a href="/signup">Signup</a></li>
                     {{/if}}
+
 
                 </ul>
             </div>

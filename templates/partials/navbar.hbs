@@ -13,7 +13,7 @@
                     <li><a href="#">Faq</a></li>
                     <li><a href="#">Contacts</a></li>
                     <li><a href="#">about</a></li>
-                    <li>
+                    {{!-- <li>
                         <div class="profile">
                             <img src="./img/user.jpg" alt="user_img">
                         </div>
@@ -21,7 +21,21 @@
                             <li>profile</li>
                             <li>sign out</li>
                         </ul>
+                    </li> --}}
+                    {{#if user}}
+                    <li>
+                        <div class="profile">
+                            <img src='./uploads/{{pimg}}' alt="user_img">
+                        </div>
+                        <ul>
+                            <li>profile</li>
+                            <li>sign out</li>
+                        </ul>
                     </li>
+                    {{else}}
+                    <li><a href="/signin">Signin</a></li>
+                    <li><a href="/signup">Signup</a></li>
+                    {{/if}}
                 </ul>
             </div>
         </div>

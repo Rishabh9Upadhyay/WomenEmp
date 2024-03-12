@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express")
 const app = express()
 const port = process.env.PORT || 3000
@@ -6,14 +7,17 @@ const hbs = require("hbs")
 const path = require("path")
 const women = require('./models/registers')
 const multer  = require("multer")
-const session = require("express-session")
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt");
+const auth = require("./middleware/auth");
 
 const template_path = path.join(__dirname,"../templates/views")
 const partials_path = path.join(__dirname,"../templates/partials")
 const static_path = path.join(__dirname,"../public")
 
 
-
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 app.use(express.static(static_path))
@@ -24,7 +28,7 @@ hbs.registerPartials(partials_path)
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Change 'uploads/' to your desired directory
+    cb(null, 'public/uploads/'); 
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -34,21 +38,48 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
+// Set up session middleware
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true
+}));
 
 
 
+// req.session.name = useremail.Name;
+// req.session.pimg = useremail.imagename;
+// req.session.email = useremail.Email;
 
 app.get("/",(req,res)=>{
-    res.render("index") 
+    if(req.session.name){
+        res.render("index",{
+            user: req.session.name, 
+            pimg:  req.session.pimg, 
+            email: req.session.email
+        })
+    }
+    else{   
+        res.render("index") 
+    }
 })  
-app.get('/About',(req,res)=>{  
-    res.render("About")
+app.get('/About',auth,(req,res)=>{  
+    if(req.session.name){
+        res.render("About",{
+            user: req.session.name, 
+            pimg:  req.session.pimg, 
+            email: req.session.email
+        })
+    }
+    else{   
+        res.render("About") 
+    }
 })
 app.get("/signin",(req,res)=>{
     res.render("signin")
 })
 app.get("/signup",(req,res)=>{
-    res.render("signup")
+    res.render("signup")  
 })
 app.post("/register",upload.single("imagename"), async (req,res)=>{
     try{
@@ -69,10 +100,25 @@ app.post("/register",upload.single("imagename"), async (req,res)=>{
                     Password: req.body.Password,
                     Cpassword: req.body.Cpassword
                 })
-                console.log("Image filename:", upload.filename);
+                const token = await registerwomen.generateAuthToken();
+                console.log("The success part jwt:"+token)
+
+                res.cookie("jwt",token,{
+                    expires: new Date(Date.now()+65000000),
+                    httpOnly: true
+                });
+
+                req.session.name = req.body.Name;
+                req.session.pimg = changedFilenmae;
+                req.session.email = req.body.Email;
+
                 const registered = await registerwomen.save();
                 console.log(registered)
-                res.render("index")
+                res.render("index",{
+                    user: req.session.name,
+                    pimg: req.session.pimg,
+                    email: req.session.email
+                })
             }
             else{
                 res.render("signup",{alert2: req.body})
@@ -89,17 +135,34 @@ app.post("/register",upload.single("imagename"), async (req,res)=>{
 
 
 
-
-// Login check
 app.post('/login',async (req,res)=>{
     try{
-        const password = req.body.Password;
-        const useremail = await women.findOne({Email:req.body.Email});
-        console.log(useremail)      
-        if(useremail && useremail.Password===password){
-                res.status(201).render("index");
-        }else{
-            res.send("Invalid Email or password");
+        const Email = req.body.Email;
+        const Password = req.body.Password;
+        const useremail = await women.findOne({Email});
+        const isMatch = await bcrypt.compare(Password,useremail.Password);
+        
+        const token = await useremail.generateAuthToken();
+
+        
+
+        if(isMatch){
+            res.cookie("jwt",token,{
+                expires: new Date(Date.now()+65000000),
+                httpOnly: true,
+                // secure: true
+            })
+            req.session.name = useremail.Name;
+            req.session.pimg = useremail.imagename;
+            req.session.email = useremail.Email;
+            res.status(200).render("index",{
+                user: req.session.name,
+                pimg: req.session.pimg,
+                email: req.session.email
+            })
+        }
+        else{
+            res.send("Invalid email or password")
         }
     }catch(e){
         res.status(400).send("Invalid Email or Password..........");
