@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Profile</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/foot.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/profile1.css" />
+</head>
+
+<body>
+    <div class="main_div">
+        {{>navbar}}
+        <div class="container">
+            <div class="profile">
+                {{#if user}}
+                <div class="left">
+                    <img src="./uploads/{{pimg}}" alt="" />
+                    <div class="right">
+                        <div class="name">{{user}}</div>
+                        <div class="contact">
+                            <h4>Your Contacts</h4>
+                            <div>
+                                email id. :
+                                <span>{{email}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="edit-profile">
+                    <button id="edit">edit profile</button>
+                    <button id="add-story">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
+                            color="#ffffff" fill="none">
+                            <path d="M12 4V20M20 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        Add your story</button>
+                </div>
+            </div>
+
+            <h2 class="posts">Your Recent Posts</h2>
+            <div class="blogs">
+            {{#if data}}
+            {{#each data}}
+                <div class="post">
+                    <div class="profile-image">
+                        <img src="./uploads/{{this.imagename}}" alt="" />
+                        <div class="name">{{this.Name}}</div>
+                    </div>
+                    <div class="story">
+                        {{this.blogcontent}}
+                    </div>
+                </div>
+            {{/each}}
+            {{else}}
+            <p>No blogs found</p>
+            {{/if}}
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+</body>
+
+</html>

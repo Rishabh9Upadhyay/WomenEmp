@@ -7,7 +7,7 @@ const auth = async (req, res, next) => {
         const token = req.cookies.jwt;
         if (!token) {
             throw new Error("Authentication token missing");
-        }
+        } 
         const varifyuser = jwt.verify(token, process.env.SECRET_KEY);  
         console.log(varifyuser);
         console.log(varifyuser._id);

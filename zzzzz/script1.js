@@ -99,4 +99,3 @@ document.addEventListener('DOMContentLoaded', function () {
     const readMoreModal = document.querySelector('.modal');
     readMoreModal.parentNode.removeChild(readMoreModal);
   }
-  

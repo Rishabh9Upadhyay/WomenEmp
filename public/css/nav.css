@@ -21,7 +21,7 @@ html
     align-items: center;
     padding: 5px 0;
     background: transparent;
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     background: rgb(40 59 73);

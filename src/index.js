@@ -11,6 +11,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const auth = require("./middleware/auth");
+const blogs = require("./models/blogs");
 
 const template_path = path.join(__dirname,"../templates/views")
 const partials_path = path.join(__dirname,"../templates/partials")
@@ -63,7 +64,26 @@ app.get("/",(req,res)=>{
         res.render("index") 
     }
 })  
-app.get('/About',auth,(req,res)=>{  
+
+
+app.get("/profile",auth,async (req,res)=>{
+    try{
+        const result  = await blogs.find({Email: req.user.Email}).sort({date: -1});
+        res.render("profile",{
+            user: req.session.name, 
+            pimg:  req.session.pimg, 
+            email: req.session.email,
+            data: result
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
+
+
+
+
+app.get('/About',(req,res)=>{  
     if(req.session.name){
         res.render("About",{
             user: req.session.name, 
@@ -75,6 +95,70 @@ app.get('/About',auth,(req,res)=>{
         res.render("About") 
     }
 })
+app.get("/writeblog", auth, (req,res)=>{
+    res.render("writeblog",{
+        user: req.session.name, 
+        pimg:  req.session.pimg, 
+        email: req.session.email
+    })
+})
+
+app.get("/seeblogs", auth, async (req, res) => {
+    try {
+        const result = await blogs.find().sort({ date: -1 });
+        res.render("seeblogs", {
+            user: req.session.name,
+            pimg: req.session.pimg,
+            email: req.session.email,
+            data: result
+        });
+    } catch (e) {
+        console.log(e);
+    }
+});
+app.get("/writeblog1",auth, async (req,res)=>{
+    try{
+        const result = await blogs.find().sort({ date: -1 });
+        res.render("seeblogs", {
+            user: req.session.name,
+            pimg: req.session.pimg,
+            email: req.session.email,
+            data: result,
+            sms: true
+        });
+    }catch(e){
+        console.log(e);
+    }
+})
+
+
+
+app.post("/addblog",auth,async (req,res)=>{
+    try{
+        const blogdoc = new blogs({
+            Name: req.user.Name,
+            Email: req.user.Email,
+            imagename: req.user.imagename,
+            blogcontent: req.body.blogcontent
+        })
+        const saved = await blogdoc.save();
+        console.log(saved)
+        const result = await blogs.find().sort({ date: -1 });
+        res.render("seeblogs",{
+            user: req.session.name, 
+            pimg:  req.session.pimg, 
+            email: req.session.email,
+            data: result
+        })
+    }catch(e){
+        console.log(e)
+    }
+})
+
+
+
+
+
 app.get("/signin",(req,res)=>{
     res.render("signin")
 })

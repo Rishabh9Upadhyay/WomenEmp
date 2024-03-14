@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/foot.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <style>
+        .seeblogs {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            grid-gap: 2px;
+
+                {
+                    {
+                    !-- background-color: rgb(191, 195, 202);
+                    --
+                }
+            }
+        }
+
+        @media only screen and (max-width:800px) {
+            .seeblogs {
+                display: grid;
+                grid-template-columns: repeat(1, auto);
+                grid-gap: 2px;
+            }
+        }
+
+        .seeblogs .subblogs {
+            border: 2px solid rgb(86, 82, 82);
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 10px;
+            margin: 2px;
+            box-shadow: 5px 5px rgb(208, 210, 210);
+        }
+
+        .seeblogs .subblogs .sblog {
+            text-decoration: underline;
+            font-size: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .seeblogs .subblogs .sblog img {
+            width: 70px;
+            height: 70px;
+            border: 1px solid rgb(68, 68, 83);
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+
+        .message {
+            font-size: 20px;
+            background-color: rgb(40 59 73);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .aa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            color: cadetblue;
+        }
+    </style>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/blog.css">
+</head>
+
+<body>
+    <div class="main_div">
+        {{>navbar}}
+        <div class="message">
+            <span id="element">These are public blogs...</span>
+            <a href="/writeblog1" class="aa">
+                <span>Post new blog</span>
+                <span class="material-symbols-outlined">
+                    arrow_right_alt
+                </span>
+                <span class="material-symbols-outlined" class="aaa">
+                    add_box
+                </span>
+            </a>
+        </div>
+        {{#if sms}}
+        {{>wblog}}
+        {{/if}}
+        <div class="seeblogs">
+            {{#if data}}
+            {{#each data}}
+            <div class="subblogs">
+                <div class="sblog"><img src="./uploads/{{this.imagename}}" alt="user_img">{{this.Name}}</div>
+                <p>{{this.blogcontent}}</p>
+                <h2>{{this.date}}</h2>
+            </div>
+            {{/each}}
+            {{else}}
+            <p>No blogs found</p>
+            {{/if}}
+        </div>
+
+
+        {{>footer}}
+    </div>
+
+    <script>
+        function  dd(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+
+            const formattedDate = `${year}-${month}-${day}`;
+
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+            return [formattedTime, formattedDate]
+
+        }
+    </script>
+</body>
+
+</html>
