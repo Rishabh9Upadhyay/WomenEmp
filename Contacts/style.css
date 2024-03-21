@@ -1,0 +1,66 @@
+.contact{
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.contact .container{
+    background-color: #fff;
+}
+
+.contact .container .contact-us{
+    background-color: #38aba4;
+    height: 40vh;
+    width: 100vw;
+}
+
+.contact .container .contact-us .header{
+    color: white;
+    font-size: 36px;
+    padding-top: 15vh;
+    padding-left: 8vw;
+}
+
+
+
+.contact .contact-form{
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.contact .contact-form .call-us img{
+    height: 40px;
+}
+.contact .contact-form .call-us{
+    border: 2px solid rgb(178, 178, 190);
+    height: 46vh;
+    width: 18vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 0 15px rgba(169, 137, 137, 0.5);
+    gap: 10px;
+}
+
+.contact .contact-form .locate-us img{
+    height: 40px;
+}
+.contact .contact-form .locate-us{
+    border: 2px solid rgb(178, 178, 190);
+    height: 46vh;
+    width: 18vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 0 15px rgba(169, 137, 137, 0.5);
+    gap: 10px;
+}
