@@ -4,7 +4,7 @@ const app = express()
 const port = process.env.PORT || 3000
 require("./db/conn1")  
 const hbs = require("hbs")
-const path = require("path")
+const path = require("path") 
 const women = require('./models/registers')
 const multer  = require("multer")
 const session = require("express-session");
@@ -12,6 +12,8 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const auth = require("./middleware/auth");
 const blogs = require("./models/blogs");
+const mongooes = require("mongoose")
+const AddQuery = require("./models/Query")
 
 const template_path = path.join(__dirname,"../templates/views")
 const partials_path = path.join(__dirname,"../templates/partials")
@@ -83,7 +85,7 @@ app.get("/profile",auth,async (req,res)=>{
 
 
 
-app.get('/About',(req,res)=>{  
+app.get('/About',auth,(req,res)=>{  
     if(req.session.name){
         res.render("About",{
             user: req.session.name, 
@@ -102,6 +104,38 @@ app.get("/writeblog", auth, (req,res)=>{
         email: req.session.email
     })
 })
+app.get("/update", auth, (req,res)=>{
+    res.render("update",{
+        user: req.session.name, 
+        pimg:  req.session.pimg, 
+        email: req.session.email
+    })
+})
+// app.get("/Community", auth,async (req,res)=>{
+//     const result = await AddQuery.findOne({Email:req.session.email})
+//     res.render("Community",{
+//         user: req.session.name, 
+//         pimg:  req.session.pimg, 
+//         email: req.session.email,
+//         data1: result
+//     })
+// })
+app.get("/Community", auth, async (req, res) => {
+    try {
+        const result = await AddQuery.findOne({ Email: req.session.email }).sort({data: -1})
+        console.log("Query Data:", result); // Log the retrieved data
+        res.render("Community", {
+            user: req.session.name,
+            pimg: req.session.pimg,
+            email: req.session.email,
+            data1: result
+        });
+    } catch (e) {
+        console.log(e);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 
 app.get("/seeblogs", auth, async (req, res) => {
     try {
@@ -147,7 +181,7 @@ app.post("/addblog",auth,async (req,res)=>{
         res.render("seeblogs",{
             user: req.session.name, 
             pimg:  req.session.pimg, 
-            email: req.session.email,
+            email: req.session.email,   
             data: result
         })
     }catch(e){
@@ -250,6 +284,120 @@ app.post('/login',async (req,res)=>{
         }
     }catch(e){
         res.status(400).send("Invalid Email or Password..........");
+    }
+})
+
+
+app.get("/logout",auth,async (req,res)=>{
+    try{
+        req.user.tokens = req.user.tokens.filter((curElement)=>{
+            return curElement.token !== req.token;
+        })
+        res.clearCookie("jwt");
+        await req.user.save();
+        res.render("index");
+    }catch(e){
+        console.log(e)
+    }
+})
+app.get("/logouteverywhere", auth,async (req,res)=>{
+    try{
+        req.user.tokens = [];
+        res.clearCookie("jwt");
+        await req.user.save();
+        res.render("login");
+    }catch(e){
+        res.status(500).send(e);
+    }
+})
+
+app.get('/update',auth,async (req,res)=>{   
+    const result = await women.findOne({Email:req.session.email})
+    if(req.session.name){
+        res.render("update",{
+            user: req.session.name, 
+            pimg:  req.session.pimg, 
+            email: req.session.email,
+            alert4: result
+        })
+    }
+    else{    
+        res.render("About") 
+    }
+})
+
+app.post("/Query",auth,async (req,res)=>{
+    try{
+        const result = await AddQuery.findOne({Email:req.session.email})
+        const QueryDoc = new AddQuery({
+            Quries: req.body.Quries,
+            Email: req.user.Email,
+            Name: req.user.Name,
+            imagename: req.user.imagename
+        })
+        const saved = await QueryDoc.save();
+        console.log(saved)
+        res.render("Community",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email,
+            data1: result
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
+
+
+
+
+
+
+
+
+app.post("/updateprofile",upload.single("imagename"),auth,async(req,res)=>{
+    try{
+        const pass = req.body.Password;
+        const cpass = req.body.Cpassword;
+        const result = await women.findOne({Email:req.session.email})
+        const changedFilenmae = req.file.filename;
+        if(pass!==cpass){
+            res.render("update",{
+                user: req.session.name, 
+                pimg:  req.session.pimg, 
+                email: req.session.email,
+                alert5: result
+            })
+        }
+        else{
+            req.session.name = req.body.Name;
+            req.session.pimg = changedFilenmae;
+            req.session.email = req.body.Email;
+            // const idVariable = new ObjectId(req.body.id);
+            const idVariable = new mongooes.Types.ObjectId(req.body.id);
+            const updated = await women.findByIdAndUpdate({_id:idVariable},{
+                $set : {
+                    Name: req.body.Name,
+                    Email: req.body.Email,
+                    Gender: req.body.Gender,
+                    imagename: changedFilenmae,
+                    Password: req.body.Password,
+                    Cpassword: req.body.Cpassword
+                }
+            },{
+                new: true,
+                useFindAndModify: false 
+            })
+            const result  = await blogs.find({Email: req.user.Email}).sort({date: -1});
+            res.render("profile",{
+                user: req.session.name, 
+                pimg:  req.session.pimg, 
+                email: req.session.email,
+                data: result
+            })
+        }
+    }catch(e){
+        console.log(e)
     }
 })
 

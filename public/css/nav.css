@@ -7,6 +7,14 @@ html
 {
     height: 100%;
 }
+body::-webkit-scrollbar
+{
+    width: 5px;
+}
+body::-webkit-scrollbar-thumb
+{
+    background: #da3b3b;
+}
 .main_div {
     width: 100%;
     height: auto;
@@ -25,6 +33,7 @@ html
     top: 0;
     left: 0;
     background: rgb(40 59 73);
+    z-index: 99999999999999;
 }
 
 /* logo */
@@ -83,14 +92,19 @@ html
     width: 100%;
 }
 /* login/logout */
-.main_div .nav_bar .items ul li .profile {
+.main_div .nav_bar .items ul li .profile1 {
     width: 40px;
     height: 40px;
     background: #fff;
     border-radius: 50%;
 }
-
-.main_div .nav_bar .items ul li .profile img {
+.main_div .nav_bar .items ul li .profile1
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.main_div .nav_bar .items ul li .profile1 img {
     width: 100%;
     height: 100%;
     object-fit: contain;

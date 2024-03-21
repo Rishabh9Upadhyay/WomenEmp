@@ -6,7 +6,14 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+body::-webkit-scrollbar
+{
+    width: 5px;
+}
+body::-webkit-scrollbar-thumb
+{
+    background: #da3b3b;
+}
 .main_div {
     width: 100%;
     height: auto;

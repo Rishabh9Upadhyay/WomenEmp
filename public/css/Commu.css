@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main_div {
+    width: 100%;
+}
+
+.main_div .com_head {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.main_div .com_head h2 {
+    padding: 15px 0;
+    text-align: center;
+    background: #000;
+    color: aliceblue;
+    font-family: "Poppins", sans-serif;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+
+
+/* community query section */
+.main_div .main_community {
+    width: 90%;
+    margin: 30px auto 0;
+    padding-bottom: 20px;
+    background: rgb(201, 198, 200, 0.4);
+}
+
+.main_div .main_community .com_grid {
+    width: 80%;
+    margin: 10px auto;
+    padding-top: 30px;
+    display: grid;
+    grid-template-rows: repeat(3, 90px);
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;
+    column-gap: 30px
+}
+
+.main_div .main_community .com_grid .com_card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(232 232 232 / 40%);
+    padding: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+}
+.main_div .main_community .com_grid .com_card:hover
+{
+    transform: translateY(-5px);
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(odd)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background: blue;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(1)::before {
+    background: #13a3fb;
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(3)::before {
+    background: #e14562;
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(5)::before {
+    background: green;
+}
+
+.main_div .main_community .com_grid .com_card .logo span {
+    font-size: 40px;
+    margin-left: 20px;
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(1) .logo span {
+    color: #13a3fb;
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(3) .logo span {
+    color: #e14562;
+
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(5) .logo span {
+    color: green;
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(even) .logo span {
+    font-size: 25px;
+    color: #e8e829;
+    transform: rotate(180deg);
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(even) .text {
+    margin-left: 8px;
+}
+
+.main_div .main_community .com_grid .com_card .text {
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(even) .duration {
+    position: absolute;
+    right: 20px;
+}
+
+.main_div .main_community .com_grid .com_card:nth-child(even) .duration p {
+    font-size: 12px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.main_div .main_community .panel_display {
+    width: 100%;
+    margin: 50px auto 10px;
+    margin-bottom: 60px;
+}
+
+.main_div .main_community .panel_display .latest {
+    width: 100%;
+    background: red;
+}
+
+.main_div .main_community .panel_display .latest h3 {
+    text-align: center;
+    padding: 10px 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 25px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+
+.main_div .main_community .panel_display .flex_box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 20px auto;
+}
+
+.main_div .main_community .panel_display .flex_box .query_section {
+    width: 60%;
+    height: 380px;
+    padding: 30px 20px;
+    background: #5f5f5f;
+    overflow-x: hidden;
+}
+.main_div .main_community .panel_display .flex_box .query_section::-webkit-scrollbar
+{
+    width: 0;
+}
+.main_div .main_community .panel_display .flex_box .query_section .query_box {
+    width: 100%;
+    min-height: 70px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 15px 10px 15px 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.main_div .main_community .panel_display .flex_box .query_section .query_box .user_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.main_div .main_community .panel_display .flex_box .query_section .query_box .user_img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.main_div .main_community .panel_display .flex_box .query_section .query_box .msg_div {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.main_div .main_community .panel_display .flex_box .query_section .query_box .msg_div .user_name {
+    display: flex;
+    align-items: center;
+}
+
+.main_div .main_community .panel_display .flex_box .query_section .query_box .msg_div .user_name .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(55, 105, 243);
+    margin-right: 5px;
+}
+
+.main_div .main_community .panel_display .flex_box .query_section .query_box .msg_div .user_name span {
+    font-family: "Mukta", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+}
+.main_div .main_community .panel_display .flex_box .query_section .query_box .msg_div .user_msg
+{
+    display: flex;
+    padding: 5px;
+}
+.main_div .main_community.panel_display .flex_box .query_section .query_box .msg_div .user_msg p
+{
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.main_div .main_community .panel_display .flex_box .query_section .query_box .comb_div
+{
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main_div .main_community .panel_display .flex_box .query_section .query_box .comb_div .like_icon span
+{
+    color: #696969;
+    font-size: 25px;
+}
+.main_div .main_community .panel_display .flex_box .query_section .query_box .comb_div .time
+{
+    margin: 0 auto;
+}
+.main_div .main_community .panel_display .flex_box .query_section .query_box .comb_div .time p
+{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* input chat section */
+.main_div .main_community .panel_display .flex_box .query_input {
+    width: 40%;
+    background: rgb(37, 38, 38);
+    padding: 10px 20px 20px 20px;
+}
+.main_div .main_community .panel_display .flex_box .query_input h4
+{
+    color: #fff;
+    text-align: center;
+    padding: 10px 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+.main_div .main_community .panel_display .flex_box .query_input .area_div
+{
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+}
+.main_div .main_community .panel_display .flex_box .query_input .area_div .m_box
+{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    font-size: 15px;
+    resize: none;
+    outline: none;
+    border-radius: 10px;
+    background: #e4e5fb;
+}
+.main_div .main_community .panel_display .flex_box .query_input input[type="submit"]
+{
+    width: 100%;
+    padding: 8px 13px;
+    margin-top: 10px;
+    border-radius: 15px;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid #fff;
+    background: transparent;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+.main_div .main_community .panel_display .flex_box .query_input input[type="submit"]:hover
+{
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+
+.main_div .main_community .f_box
+{
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    /* background: rgb(255, 255, 255,0.7); */
+    backdrop-filter: blur(10px);
+    user-select: none;
+}
+.main_div .main_community .f_box .head
+{
+    width: 100%;
+    background: rgb(20, 20, 20);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.main_div .main_community .f_box .head h2
+{
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+    text-align: center;
+}
+.main_div .main_community .f_box .sections
+{
+    width: 100%;
+}
+.main_div .main_community .f_box .sections details
+{
+    width: 100%;
+    padding: 15px;
+    background: rgb(54, 54, 54);
+    color: aliceblue;
+    border-radius: 5px;
+    border-bottom: 1px solid #fff;
+}
+.main_div .main_community .f_box .sections details summary
+{
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+.main_div .main_community .f_box .sections details p
+{
+    margin-top: 5px;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+}
+
+
+
+
+

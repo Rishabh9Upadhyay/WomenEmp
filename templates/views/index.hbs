@@ -25,9 +25,9 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="#">Contents</a></li>
-                    <li><a href="#">Updates</a></li>
+                    <li><a href="/update">Updates</a></li>
                     <li><a href="/seeblogs">blogs</a></li>
-                    <li><a href="#">Faq</a></li>
+                    <li><a href="/Community">Community</a></li>
                     <li><a href="#">Contacts</a></li>
                     <li><a href="/About">About</a></li>
                     {{#if user}}
@@ -36,8 +36,8 @@
                             <img src='./uploads/{{pimg}}' alt="user_img">
                         </div>
                         <ul>
-                            <li>profile</li>
-                            <li>sign out</li>
+                            <a href="/profile"><li>profile</li></a>
+                            <a href="/logout"><li>sign out</li></a>
                         </ul>
                     </li>
                     {{else}}
