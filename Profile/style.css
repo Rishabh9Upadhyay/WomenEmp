@@ -15,7 +15,7 @@
   background-color: #f1f1f1; /* Color of the scrollbar track */
 }
 
-.container .profile {
+.profile {
   display: flex;
   justify-content: space-around;
   width: 58vw;
@@ -27,7 +27,7 @@
   padding-right: 20px;
   /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); */
 }
-.profile .left {
+.left {
   display: flex;
   align-items: center;
 }
@@ -40,47 +40,45 @@
   margin-top: 35px;
 }
 
-.profile .left .right {
+.right {
   margin: 40px;
 }
 
-.profile .left .right .name {
+.name {
   font-size: 24px;
   font-weight: 700;
   text-align: center;
   margin-bottom: 10px;
-  padding-top: 10px;
-  font-size: 24px;
 }
 
-.profile .left .right .contact {
+.contact {
   margin-top: 10px;
 }
 
-.profile .left .right .contact h4 {
+.contact h4 {
   margin-bottom: 10px;
 }
 
-.profile .left .right .contact div {
+.contact div {
   margin-bottom: 5px;
 }
 
-.profile .left .right .contact span {
+.contact span {
   font-weight: 500;
 }
 
 /* Add this CSS to align the spans within the contact div */
-.profile .left .right .contact div {
+.contact div {
   margin-bottom: 5px; /* Keep the margin for spacing */
   align-items: center; /* Align items vertically */
 }
 
-.profile .left .right .contact span {
+.contact span {
   font-weight: 500; /* Keep the font weight */
   margin-left: 5px; /* Add margin to separate the text */
 }
 
-.profile .edit-profile {
+.edit-profile {
   display: flex;
   justify-content: end;
   align-items: flex-end;
@@ -89,7 +87,7 @@
   right: 20px;
   bottom: 40px
 }
-.profile .edit-profile button {
+.edit-profile button {
   padding: 4px 16px;
   background-color: #4caf50;
   border: none;
@@ -97,7 +95,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.container button:hover {
+button:hover {
   background-color: #388e3c;
 }
 
@@ -111,7 +109,7 @@
   border-radius: 5px;
 }
 
-.container .posts {
+.posts {
   height: 30px;
   padding: 5px;
   margin-top: 10px;
@@ -120,9 +118,11 @@
   justify-content: center;
   align-items: center;
 }
+.blogs {
+  height: 100vh;
+}
 
-
-.container .blogs .post {
+.post {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,42 +130,32 @@
   border: 2px solid rgb(218, 216, 216);
   border-radius: 5px;
   width: 54vw;
-  margin-left: 25vw;
-  margin-bottom: 10px;
+  margin-left: 23vw;
 }
-.container .blogs .post .profile-image {
+.profile-image {
   display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    width: 50vw;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 500px;
 }
-
-.blogs .post .profile-image .name {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
+.name {
   padding-top: 10px;
   font-size: 24px;
 }
 
-.blogs .post .profile-image img {
+.profile-image img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin: 10px 10px 10px 0px;
 }
-.blogs .post .story {
-  margin: 10px;
-  /* margin-top: 15px; */
+.story {
+  margin: 20px;
+  margin-top: 15px;
   border-radius: 3px;
   height: 200px;
-  /* padding: 25px; */
+  padding: 25px;
   font-size: 18px;
   overflow-y: auto;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-bottom: 20px;
-  padding-right: 25px;
-  padding-left: 25px;
 }
