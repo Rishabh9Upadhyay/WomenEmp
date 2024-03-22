@@ -122,8 +122,8 @@ app.get("/update", auth, (req,res)=>{
 // })
 app.get("/Community", auth, async (req, res) => {
     try {
-        const result = await AddQuery.findOne({ Email: req.session.email }).sort({data: -1})
-        console.log("Query Data:", result); // Log the retrieved data
+        const result = await AddQuery.find({ Email: req.session.email }).sort({data: -1})
+        console.log("Query Data:", result);
         res.render("Community", {
             user: req.session.name,
             pimg: req.session.pimg,
@@ -328,7 +328,6 @@ app.get('/update',auth,async (req,res)=>{
 
 app.post("/Query",auth,async (req,res)=>{
     try{
-        const result = await AddQuery.findOne({Email:req.session.email})
         const QueryDoc = new AddQuery({
             Quries: req.body.Quries,
             Email: req.user.Email,
@@ -336,6 +335,7 @@ app.post("/Query",auth,async (req,res)=>{
             imagename: req.user.imagename
         })
         const saved = await QueryDoc.save();
+        const result = await AddQuery.find({Email:req.session.email}).sort({date: -1})
         console.log(saved)
         res.render("Community",{
             user: req.session.name, 
@@ -347,6 +347,38 @@ app.post("/Query",auth,async (req,res)=>{
         console.log(e);
     }
 })
+
+// Route parameters allow you to extract data from the URL and use it within your route handler functions. 
+// Route parameters enable you to create dynamic routes that can handle different requests based on the values provided in the URL.
+app.get('/profile/:_id',auth, async (req, res) => {
+    try{
+        const docId1 = req.params._id;
+        const docId = docId1.replace(':', '');
+        const result1 = await blogs.find({_id:docId})
+        const result2 = await blogs.findOne({_id:docId})
+        res.render("otherprofile",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email,
+            data2: result1,
+            data3: result2
+        })
+    }catch(e){
+        console.log(e);
+    }
+});
+app.get('/profile1',auth, async (req, res) => {
+    try{
+        res.render("otherprofile",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email
+        })
+    }catch(e){
+        console.log(e);
+    }
+});
+
 
 
 

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Profile</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/foot.css">
+    {{!--
+    <link rel="stylesheet" href="./css/nav.css"> --}}
+
+    {{!--
+    <link rel="stylesheet" href="./css/profile1.css" /> --}}
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        *::-webkit-scrollbar {
+            width: 8px;
+            /* Width of the scrollbar */
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: #a5a5a5;
+            /* Color of the scrollbar thumb */
+            border-radius: 2px;
+            /* Rounded corners */
+        }
+
+        *::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            /* Color of the scrollbar track */
+        }
+
+        .container .profile {
+            display: flex;
+            justify-content: space-around;
+            width: 58vw;
+            margin-left: 21vw;
+            margin-top: 3vh;
+            /* border: 2px solid #ddd; */
+            background-color: #fff;
+            padding-left: 20px;
+            padding-right: 20px;
+            /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); */
+        }
+
+        .profile .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .main_div .blogs {
+            height: auto;
+        }
+
+        .profile img {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            margin: 10px;
+            margin-top: 35px;
+        }
+
+        .profile .left .right {
+            margin: 40px;
+        }
+
+        .profile .left .right .name {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            font-size: 24px;
+        }
+
+        .profile .left .right .contact {
+            margin-top: 10px;
+        }
+
+        .profile .left .right .contact h4 {
+            margin-bottom: 10px;
+        }
+
+        .profile .left .right .contact div {
+            margin-bottom: 5px;
+        }
+
+        .profile .left .right .contact span {
+            font-weight: 500;
+        }
+
+        /* Add this CSS to align the spans within the contact div */
+        .profile .left .right .contact div {
+            margin-bottom: 5px;
+            /* Keep the margin for spacing */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .profile .left .right .contact span {
+            font-weight: 500;
+            /* Keep the font weight */
+            margin-left: 5px;
+            /* Add margin to separate the text */
+        }
+
+        .profile .edit-profile {
+            display: flex;
+            justify-content: end;
+            align-items: flex-end;
+            gap: 10px;
+            position: relative;
+            right: 20px;
+            bottom: 40px
+        }
+
+        .profile .edit-profile button {
+            padding: 4px 16px;
+            background-color: #4caf50;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .container button:hover {
+            background-color: #388e3c;
+        }
+
+        #edit {
+            background-color: #4a8dbe;
+            border-radius: 5px;
+        }
+
+        #add-story {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        .container .posts {
+            height: 30px;
+            padding: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .container .blogs .post {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgb(218, 216, 216);
+            border-radius: 5px;
+            width: 54vw;
+            margin-left: 25vw;
+            margin-bottom: 10px;
+        }
+
+        .container .blogs .post .profile-image {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            width: 50vw;
+        }
+
+        .blogs .post .profile-image .name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            font-size: 24px;
+        }
+
+        .blogs .post .profile-image img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 10px 10px 10px 0px;
+        }
+
+        .blogs .post .story {
+            margin: 10px;
+            /* margin-top: 15px; */
+            border-radius: 3px;
+            height: 200px;
+            /* padding: 25px; */
+            font-size: 18px;
+            overflow-y: auto;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-bottom: 20px;
+            padding-right: 25px;
+            padding-left: 25px;
+        }
+    </style>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #da3b3b;
+        }
+
+        .main_div {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+
+        /* nav bar */
+        .main_div .nav_bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            background: transparent;
+            position: sticky;
+            top: 0;
+            left: 0;
+            background: rgb(40 59 73);
+            z-index: 99999999999999;
+        }
+
+        /* logo */
+        .main_div .nav_bar .logo {
+            width: 150px;
+            height: 80px;
+            margin-left: 50px;
+        }
+
+        .main_div .nav_bar .logo a img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .main_div .nav_bar .items {
+            margin-right: 30px;
+        }
+
+        .main_div .nav_bar .items ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .main_div .nav_bar .items ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .main_div .nav_bar .items ul li a {
+            text-decoration: none;
+            color: #fff;
+            text-transform: capitalize;
+            font-family: "Roboto", sans-serif;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .main_div .nav_bar .items ul li a:hover {
+            color: #9854e7;
+        }
+
+        .main_div .nav_bar .items ul li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background: #9854e7;
+            transition: all 0.3s ease;
+        }
+
+        .main_div .nav_bar .items ul li a:hover::before {
+            width: 100%;
+        }
+
+        /* login/logout */
+        .main_div .nav_bar .items ul li .profile1 {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .main_div .nav_bar .items ul li .profile1 {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .main_div .nav_bar .items ul li .profile1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .main_div .nav_bar .items ul li ul {
+            position: absolute;
+            background: rgb(23, 31, 44);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 150px;
+            right: -5px;
+            padding: 5px;
+            display: none;
+        }
+
+        .main_div .nav_bar .items ul li ul li {
+            width: 100%;
+            font-size: 15px;
+            padding: 5px 0;
+            color: #fff;
+            font-family: "Roboto", sans-serif;
+            text-align: center;
+            margin-left: 0;
+            transition: all 0.3s linear;
+        }
+
+        .main_div .nav_bar .items ul li ul li:hover {
+            background: #3f4d5e;
+            cursor: pointer;
+        }
+
+        .main_div .nav_bar .items ul li:hover>ul,
+        .main_div .nav_bar .items ul li .profile:hover+ul {
+            display: block;
+        }
+    </style>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .main_div {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* footer */
+        .main_div .footer {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            border-top: 10px solid #000;
+            margin-top: auto;
+        }
+
+        .main_div .footer .card {
+            flex: 1 1 250px;
+            height: 250px;
+            padding: 20px;
+            background: rgb(15, 15, 15);
+        }
+
+        .main_div .footer .card .heading_foot h2 {
+            font-size: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            text-transform: capitalize;
+            font-weight: 600;
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+
+        .main_div .footer .card .contact .all_cont,
+        .main_div .footer .card .address .all_cont {
+            margin-top: 20px;
+        }
+
+        .main_div .footer .card .contact .all_cont .common {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 15px;
+            cursor: pointer;
+        }
+
+        .main_div .footer .card .contact .all_cont .common i,
+        .main_div .footer .card .address .all_cont .common i {
+            font-size: 15px;
+            color: #fff;
+        }
+
+
+        .main_div .footer .card .contact .all_cont .common span,
+        .main_div .footer .card .address .all_cont .common span {
+
+            font-size: 15px;
+            color: #fff;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .main_div .footer .card .what .all_cont .call ul li {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 15px;
+            color: #fff;
+            font-family: "Roboto", sans-serif;
+            margin-top: 10px;
+        }
+
+        .main_div .footer .card .contact .all_cont .social {
+            display: flex;
+            justify-content: center;
+        }
+
+        .main_div .footer .card .contact .all_cont .social a {
+            text-decoration: none;
+        }
+
+        .main_div .footer .card .contact .all_cont .social a i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .main_div .footer .card .contact .all_cont .social a i:hover {
+            color: blue;
+        }
+
+        .main_div .footer .card .address .all_cont .common .input_div {
+            margin-top: 20px;
+        }
+
+        .main_div .footer .card .address .all_cont .common .input_div input[type="text"] {
+            outline: none;
+            padding: 2px;
+        }
+
+        .main_div .footer .card .address .all_cont .common .input_div button {
+            padding: 3px 5px;
+            color: #fff;
+            background: #890ef6;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_div">
+        {{>navbar}}
+        <div class="container">
+            <div class="profile">
+                {{#if data3}}
+                <div class="left">
+                    <img src="./uploads/{{data3.imagename}}" alt="" />
+                    <div class="right">
+                        <div class="name">{{data3.Name}}</div>
+                        <div class="contact">
+                            <h4>Your Contacts</h4>
+                            <div>
+                                email id. :
+                                <span>{{data3.Email}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+                {{!-- <div class="edit-profile">
+                    <button id="edit"><a href="/update">edit profile</a></button>
+                    <button id="add-story">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
+                            color="#ffffff" fill="none">
+                            <path d="M12 4V20M20 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        Add your story</button>
+                </div> --}}
+            </div>
+
+            <h2 class="posts">Your Recent Posts</h2>
+            <div class="blogs">
+                {{#if data2}}
+                {{#each data2}}
+                <div class="post">
+                    <div class="profile-image">
+                        <img src="./uploads/{{this.imagename}}" alt="" />
+                        <div class="name">{{this.Name}}</div>
+                    </div>
+                    <div class="story">
+                        {{this.blogcontent}}
+                    </div>
+                </div>
+                {{/each}}
+                {{else}}
+                <p>No blogs found</p>
+                {{/if}}
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+</body>
+
+</html>

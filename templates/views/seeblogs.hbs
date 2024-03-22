@@ -104,7 +104,7 @@
             {{#if data}}
             {{#each data}}
             <div class="subblogs">
-                <div class="sblog"><img src="./uploads/{{this.imagename}}" alt="user_img">{{this.Name}}</div>
+                <a href="/profile/:{{this._id}}"><div class="sblog"><img src="./uploads/{{this.imagename}}" alt="user_img">{{this.Name}}</div></a>
                 <p>{{this.blogcontent}}</p>
                 <h2>{{this.date}}</h2>
             </div>
@@ -113,27 +113,8 @@
             <p>No blogs found</p>
             {{/if}}
         </div>
-
-
         {{>footer}}
     </div>
-
-    <script>
-        function  dd(date) {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            const hours = String(date.getHours()).padStart(2, '0');
-            const minutes = String(date.getMinutes()).padStart(2, '0');
-            const seconds = String(date.getSeconds()).padStart(2, '0');
-
-            const formattedDate = `${year}-${month}-${day}`;
-
-            const formattedTime = `${hours}:${minutes}:${seconds}`;
-            return [formattedTime, formattedDate]
-
-        }
-    </script>
 </body>
 
 </html>
