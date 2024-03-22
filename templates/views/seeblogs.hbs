@@ -12,10 +12,27 @@
     <link rel="stylesheet" href="./css/foot.css">
     <link rel="stylesheet" href="./css/nav.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        h1{
+            padding: 10px;
+            text-align: center;
+            font-size: 30px;
+            font-family: sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            color: #000;
+            margin-bottom: 30px;
+        }
         .seeblogs {
+            width: 95%;
+            height: 80vh;
+            overflow-y: auto;
+            margin: 5px auto 50px;
             display: grid;
             grid-template-columns: repeat(2, auto);
-            grid-gap: 2px;
+            grid-column-gap: 20px;
+            grid-row-gap: 15px;
 
                 {
                     {
@@ -23,6 +40,10 @@
                     --
                 }
             }
+        }
+        .seeblogs::-webkit-scrollbar
+        {
+            display: none;
         }
 
         @media only screen and (max-width:800px) {
@@ -34,67 +55,101 @@
         }
 
         .seeblogs .subblogs {
-            border: 2px solid rgb(86, 82, 82);
-            border-radius: 5px;
-            border-top-left-radius: 0px;
-            border-top-right-radius: 20px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
             padding: 10px;
             margin: 2px;
-            box-shadow: 5px 5px rgb(208, 210, 210);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .seeblogs .subblogs .sb
+        {
+            text-decoration: none;
         }
 
         .seeblogs .subblogs .sblog {
-            text-decoration: underline;
             font-size: 50px;
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
 
         .seeblogs .subblogs .sblog img {
-            width: 70px;
-            height: 70px;
-            border: 1px solid rgb(68, 68, 83);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            margin-right: 4px;
+            margin: 0 5px 0 3px;
+        }
+        .seeblogs .subblogs .sblog span
+        {
+            font-size: 30px;
+            font-family: sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: capitalize;
+            margin-left: 5px;
+            color: #000;
+        }
+        .subblogs p{
+            font-size: 18px;
+            margin-left: 10px;
+            word-wrap: break-word;
+            word-break: break-all;
+            font-family: "Poppins", sans-serif;
+            
+        }
+        .seeblogs h2{
+            color: red;
+            align-self: flex-end;
+            font-size: 18px;
+            margin-top: auto;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 10px 0;
         }
 
         .message {
+            width: 89%;
             font-size: 20px;
-            background-color: rgb(40 59 73);
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            justify-content: flex-end;
+            margin: 10px auto;
+        }
+        .message .c_crea
+        {
+            color: #000;
+            margin-right: 20px;
+        }
+        .message a{
+            text-decoration: none;
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
         }
 
-        .aa {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 10px;
-            color: cadetblue;
-        }
     </style>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./css/blog.css">
 </head>
 
-<body>
+<body onload="manipulateDate()">
     <div class="main_div">
         {{>navbar}}
         <div class="message">
-            <span id="element">These are public blogs...</span>
+            <span class="c_crea">create a new blog</span>
             <a href="/writeblog1" class="aa">
-                <span>Post new blog</span>
-                <span class="material-symbols-outlined">
-                    arrow_right_alt
-                </span>
-                <span class="material-symbols-outlined" class="aaa">
-                    add_box
-                </span>
+                <i class="fa-solid fa-plus"></i>
             </a>
         </div>
         {{#if sms}}
@@ -104,9 +159,9 @@
             {{#if data}}
             {{#each data}}
             <div class="subblogs">
-                <a href="/profile/:{{this._id}}"><div class="sblog"><img src="./uploads/{{this.imagename}}" alt="user_img">{{this.Name}}</div></a>
+                <a  href="/profile/:{{this._id}}" class="sb"><div class="sblog"><img src="./uploads/{{this.imagename}}" alt="user_img"><span>{{this.Name}}</span></div></a>
                 <p>{{this.blogcontent}}</p>
-                <h2>{{this.date}}</h2>
+                <h2 class="date">{{this.date}}</h2>
             </div>
             {{/each}}
             {{else}}
@@ -115,6 +170,28 @@
         </div>
         {{>footer}}
     </div>
+   <script>
+  // Function to manipulate date string
+  function manipulateDate() {
+    // Get the elements containing the date string
+    var dateElements = document.querySelectorAll('.date');
+
+    dateElements.forEach((elem) => {
+      // Extract the date string
+      var dateString = elem.textContent;
+
+      // Manipulate the date string (remove "GMT+0530 (India Standard Time)")
+      var manipulatedDateString = dateString.replace("GMT+0530 (India Standard Time)", "");
+
+      // Update the content of the element with manipulated date string
+      elem.textContent = manipulatedDateString;
+    });
+  }
+  
+  // Call manipulateDate function when the page loads
+  window.onload = manipulateDate;
+</script>
+
 </body>
 
 </html>

@@ -25,7 +25,9 @@
                             live_help
                         </span>
                     </div>
-                    <div class="text">Ask the Community</div>
+                    <a href="#q_id" style="text-decoration: none;">
+                        <div class="text">Ask the Community</div>
+                    </a>
                 </div>
                 <div class="com_card">
                     <div class="logo">
@@ -121,12 +123,12 @@
 
 
                     <!-- write queries -->
-                    <div class="query_input">
+                    <div class="query_input" id="q_id">
                         <h4>ask your question</h4>
                         <form action="/Query" method="post">
                             <div class="area_div">
                                 <textarea name="Quries" cols="30" rows="10" class="m_box"
-                                    placeholder="say something..."></textarea>
+                                    placeholder="say something..." autofocus></textarea>
                             </div>
                             <input type="submit">
                         </form>
