@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+form {
+    max-width: 900px;
+    margin: 4px auto;
+}
+
+body{
+    background-color: #c3f5ff;
+}
+.container .ContactForm {
+    border: 2px dashed rgb(114, 112, 116);
+    background-color: #c3f5ff;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.contactus-heading {
+    font-size: 5em;
+    padding-top: 2rem;
+    color: #241d1dd3;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback-input {
+    color: #302e34;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 22px;
+    background-color: transparent;
+    border: 2px solid #CC6666;
+    transition: all 0.3s;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+.feedback-input:focus {
+    border: 2px solid #CC4949;
+}
+
+textarea {
+    height: 150px;
+    line-height: 150%;
+    resize: vertical;
+}
+
+[type="submit"] {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    width: 100%;
+    background: #3c6671;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    color: rgb(250 254 255);
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+}
+
+[type="submit"]:hover {
+    background: #6a668d;
+    color: aliceblue;
+    font-size: 24px;
+}

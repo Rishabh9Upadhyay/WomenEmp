@@ -496,26 +496,15 @@
                     </div>
                 </div>
                 {{/if}}
-                {{!-- <div class="edit-profile">
-                    <button id="edit"><a href="/update">edit profile</a></button>
-                    <button id="add-story">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-                            color="#ffffff" fill="none">
-                            <path d="M12 4V20M20 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-
-                        Add your story</button>
-                </div> --}}
             </div>
 
-            <h2 class="posts">Your Recent Posts</h2>
             <div class="blogs">
                 {{#if data2}}
                 {{#each data2}}
                 <div class="post">
                     <div class="profile-image">
-                        <img src="./uploads/{{this.imagename}}" alt="" />
+                        <img src="./uploads/{{this.imagename}}" alt="" />>
+
                         <div class="name">{{this.Name}}</div>
                     </div>
                     <div class="story">
