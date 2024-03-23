@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background: #000;
+}
+.main_div 
+{
+    width: 100%;
+    min-height: 100vh;
+   
+}
+.main_div .main_cc
+{
+    width: 100%;
+    margin-bottom: 30px;
+   
+}
+.main_div .main_cc .ac_sec
+{
+    width: 50%;
+    margin: 60px auto;
+    color: #d6d6d6;
+}
+.main_div .main_cc .ac_sec .ques_div
+{
+    width: 100%;
+    padding: 18px 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background: #262626;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.3);
+}
+.main_div .main_cc .ac_sec .ques_div .question
+{
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+.main_div .main_cc .ac_sec .ques_div .question h3
+{
+    font-family: "Wix Madefor Text", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_btn 
+{
+    width: 120px;
+    padding: 8px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    border: 0.5px solid #dfdfdf;
+    font-family: "Wix Madefor Text", sans-serif;
+    user-select: none;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_btn:hover
+{
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.091);
+}
+.main_div .main_cc .ac_sec .ques_div .ans_btn span
+{
+    font-size: 25px;
+    margin-right: 3px;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area
+{
+    width: 50%;
+    background: #484848;
+    padding: 5px;
+    border-radius: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area.active
+{
+    display: block;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area .input_section
+{
+    width: 100%;
+    height: auto;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area .input_section textarea
+{
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 5px;
+    color: #d6d6d6;
+    resize: none;
+    font-size: 15px;
+    font-family: "Wix Madefor Text", sans-serif;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area .input_section textarea::-webkit-scrollbar
+{
+    display: none;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area .send_btn
+{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area .send_btn input[type="submit"]
+{
+    padding: 5px 8px;
+    background: #39a5f1;
+    color: #dfdfdf;
+    border-radius: 3px;
+    border: none;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area .send_btn input[type="submit"]:hover
+{
+    cursor: pointer;
+}
+.main_div .main_cc .ac_sec .ques_div .ans_area .send_btn span:hover
+{
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.091);
+}
+
+.main_div .main_cc .ac_sec .ans_div
+{
+    width: 100%;
+    margin-top: 20px;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section
+{
+    width: 100%;
+    background: #262626;;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .user_details
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .user_details .user_img 
+{
+    width: 35px;
+    height: 35px;
+    background: red;
+    border-radius: 50%;
+    border: 0.5px solid #dfdfdf;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .user_details .user_img img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .user_details .user_name
+{
+    font-size: 18px;
+    color: #d6d6d6;
+    margin-left: 10px;
+    font-family: "Wix Madefor Text", sans-serif;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .user_ans
+{
+    width: 100%;
+    margin: 10px 0;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .user_ans p
+{
+    font-size: 15px;
+    font-family: "Wix Madefor Text", sans-serif;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .time_sec
+{
+    width: 100%;
+    height: 20px;
+    margin: 10px 0;
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+.main_div .main_cc .ac_sec .ans_div .main_section .time_sec span
+{
+    font-size: 12px;
+    font-family: "Wix Madefor Text", sans-serif;
+    font-weight: 700;
+}
+
