@@ -46,7 +46,7 @@
                             breaking_news_alt_1
                         </span>
                     </div>
-                    <div class="text">News from Community</div>
+                    <a href="/qna" style="text-decoration: none;"><div class="text">News from Community</div></a>
                 </div>
                 <div class="com_card">
                     <div class="logo">
@@ -65,7 +65,7 @@
                             check_box
                         </span>
                     </div>
-                    <div class="text">Suggestion Box</div>
+                    <a href="/seeans" style="text-decoration: none;"><div class="text">Read Answers</div></a>
                 </div>
                 <div class="com_card">
                     <div class="logo">
@@ -110,7 +110,7 @@
                                     </span>
                                 </div>
                                 <div class="time">
-                                    <p>{{this.date}}</p>
+                                    {{!-- <p>{{this.date}}</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -127,8 +127,8 @@
                         <h4>ask your question</h4>
                         <form action="/Query" method="post">
                             <div class="area_div">
-                                <textarea name="Quries" cols="30" rows="10" class="m_box"
-                                    placeholder="say something..." autofocus></textarea>
+                                <textarea name="Quries" maxlength="200" cols="30" rows="10" class="m_box"
+                                    placeholder="Please write youe question in 200 words..." autofocus></textarea>
                             </div>
                             <input type="submit">
                         </form>

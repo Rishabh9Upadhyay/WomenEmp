@@ -90,6 +90,47 @@
                         <input type="submit" value="submit" name="submit">
                         <p>Have already account? <a href="/signin">login</a></p>
                     </form>
+
+                    {{else if alert5}}
+
+
+
+
+                    <form method="post" action="/register" enctype="multipart/form-data">
+                        <div class="heading">
+                            <h2>Update Profile</h2>
+                        </div>
+                        <div class="grup_div">
+                            <input type="text" value="{{alert5.Name}}" name="Name" placeholder="Name" autocomplete="off"
+                                required>
+                        </div>
+                        <div class="grup_div">
+                            <input type="email" value="{{alert5.Email}}" readonly name="Email" placeholder="Email" autocomplete="off" required>
+                        </div>
+                        <div class="group_div">
+                            <span style="margin: 0px 10px;"><input type="radio" name="Gender" value="{{alert5.Gender}}">Male</span>
+                            <span style="margin: 0px 10px;"><input type="radio" name="Gender" value="{{alert5.Gender}}">Female</span>
+                            <span style="margin: 0px 10px;"><input type="radio" name="Gender" value="{{alert5.Gender}}">others</span>
+                        </div>
+                        <div class="grup_div">
+                            <input type="password" name="Password" placeholder="Password"
+                                autocomplete="off" required>
+                        </div>
+                        <div class="grup_div">
+                            <input type="password" name="Cpassword"
+                                placeholder="Re-enter password" autocomplete="off" required>
+                        </div>
+                        <div class="grup_div">
+                            <input type="file" accept="iamge/*" name="imagename">
+                        </div>
+                        <input type="submit" value="submit" name="submit">
+                        {{!-- <p>Have already account? <a href="/signin">login</a></p> --}}
+                    </form>
+
+
+
+
+
                     {{else}}
                     <form method="post" action="/register" enctype="multipart/form-data">
                         <div class="heading">

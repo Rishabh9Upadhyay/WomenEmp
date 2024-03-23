@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Contest</title>
+    <link rel="stylesheet" href="./css/contest.css" />
+        {{!-- <link rel="stylesheet" href="./css/about.css"/> --}}
+    {{!-- <link rel="stylesheet" href="./css/style.css"> --}}
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/foot.css">
+    <link rel="icon" type="images/png" href="./img/favicon.webp">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="main_div">
+        {{>navbar}}
+
+    
+        <header>
+            <h1>Women Empowerment Contest</h1>
+        </header>
+
+        <div class="container">
+            <div class="winners">
+                <img src="./img/win-1.jpg" alt="" height="300px" width="400px" />
+                <img src="./img/win-2.jpg" alt="" height="300px" width="400px" />
+                <img src="./img/win-3.png" alt="" height="300px" width="400px" />
+            </div>
+
+            <div class="about-contest">
+                <h2>About the Contest</h2>
+                <p>
+                    This contest is open to all women who are passionate about empowering
+                    themselves and others. Whether you're a student striving for academic
+                    excellence, a dedicated professional making strides in your career, an
+                    ambitious entrepreneur with innovative ideas, or a nurturing homemaker
+                    managing the household with love and care, you're welcome to
+                    participate and showcase your unique talents, experiences, and
+                    perspectives.
+                </p>
+                <p>
+                    The purpose of this contest is multifaceted. Firstly, it aims to
+                    celebrate and recognize the diverse achievements of women across
+                    various fields and walks of life. By highlighting the accomplishments
+                    of women from different backgrounds, cultures, and professions, we
+                    seek to inspire others and break down barriers that may hinder women's
+                    progress and success.
+                </p>
+                <p>
+                    Furthermore, this contest serves as a platform to foster
+                    collaboration, mentorship, and support among women. Through meaningful
+                    interactions and networking opportunities, participants can connect
+                    with like-minded individuals, exchange valuable insights, and build a
+                    strong community of empowered women.
+                </p>
+                <p>
+                    Most importantly, this contest aspires to catalyze positive change in
+                    our communities and society at large. By amplifying women's voices and
+                    advocating for gender equality, we aim to create a more inclusive and
+                    equitable world where every woman has the opportunity to thrive and
+                    fulfill her potential.
+                </p>
+            </div>
+
+            <div class="overview">
+                <div class="quiz interest">
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+                <div class="Learning interest"></div>
+                <div class="entrepreneurship interest"></div>
+                <div class="leadership interest"></div>
+                <div class="artist interest"></div>
+                <div class="community-service interest"></div>
+                <div class="Health-wellness interest"></div>
+            </div>
+
+
+            {{#if p1}}
+            <div class="form-section">
+                <h2>Register for the Contest</h2>
+                <form action="/registercontest" method="post">
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="text" id="phone" name="Phone" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="text" id="age" name="Age" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="Address" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hear-about">Where did you hear about us:</label>
+                        <div class="hear-about-options">
+                            <select id="hear-about" name="Hearing">
+                                <option value="social-media">From Social Media</option>
+                                <option value="friend">From a Friend</option>
+                                <option value="website">From Our Website</option>
+                                <option value="event">From an Event</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">Field of Interest:</label>
+                        <select id="interest" name="Area">
+                            <option value="quiz">Quiz Competition</option>
+                            <option value="learning">Learning Workshop</option>
+                            <option value="entrepreneurship">Entrepreneurship Challenge</option>
+                            <option value="leadership">Leadership Development Program</option>
+                            <option value="art">Artistic Expression Contest</option>
+                            <option value="community">Community Service Project</option>
+                            <option value="health">Health and Wellness Initiative</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea id="comment" name="Comments"></textarea>
+                    </div>
+
+                    <button type="submit" class="ccc">Submit</button>
+                </form>
+            </div>
+            {{/if}}
+
+            {{#if p1}}
+            {{else}}
+            <a href="/seecontest1"><button id="contestButton">Apply contest</button></a>
+            {{!-- <button id="contestButton">Apply contest</button> --}}
+            {{/if}}
+        </div>
+        {{>footer}}
+    </div>
+</body>
+
+</html>
