@@ -118,7 +118,8 @@ header h1{
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    align-self: center;
+    display: block;
+    margin: 10px auto;
   }
   
   #contestButton:hover {

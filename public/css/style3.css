@@ -1,79 +1,65 @@
-* {
-    margin: 0;
+*
+{
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    box-sizing: border-box;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-form {
-    max-width: 900px;
-    margin: 4px auto;
-}
-
-body{
-    background-color: #c3f5ff;
-}
-.container .ContactForm {
-    border: 2px dashed rgb(114, 112, 116);
-    background-color: #c3f5ff;
-    padding: 4px;
-    border-radius: 10px;
-}
-
-.contactus-heading {
-    font-size: 5em;
-    padding-top: 2rem;
-    color: #241d1dd3;
+.main_div
+{
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-
-.feedback-input {
-    color: #302e34;
-    font-family: Helvetica, Arial, sans-serif;
+.main_div .container1111
+{
+    width: 400px;
+    padding: 20px;
+    background: rgb(23, 23, 47);
+    margin: 30px 0;
+    border-radius: 10px;
+}
+.main_div .container1111 h1
+{
+    font-size: 30px;
+    margin: 5px 0 20px;
     font-weight: 500;
-    font-size: 18px;
-    border-radius: 5px;
-    line-height: 22px;
-    background-color: transparent;
-    border: 2px solid #CC6666;
-    transition: all 0.3s;
-    padding: 10px;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+.main_div .container1111 .in_grp
+{
     width: 100%;
-    box-sizing: border-box;
-    outline: 0;
+    display: flex;
+    flex-direction: column;
 }
-
-.feedback-input:focus {
-    border: 2px solid #CC4949;
-}
-
-textarea {
-    height: 150px;
-    line-height: 150%;
-    resize: vertical;
-}
-
-[type="submit"] {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+.main_div .container1111 .in_grp textarea
+{
     width: 100%;
-    background: #3c6671;
-    border-radius: 5px;
-    border: 0;
-    cursor: pointer;
-    color: rgb(250 254 255);
-    font-size: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    transition: all 0.3s;
-    margin-top: -4px;
-    font-weight: 700;
-}
-
-[type="submit"]:hover {
-    background: #6a668d;
+    height: 200px;
+    resize: none;
+    border-radius: 15px;
+    background: transparent;
+    outline: none;
+    padding: 15px;
     color: aliceblue;
-    font-size: 24px;
 }
+.main_div .container1111 .in_grp #btns
+{
+    width: 100%;
+    margin: 10px 0;
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 20px;
+    background: #1b34f1;
+    transition: all 0.3s ease;
+}
+.main_div .container1111 .in_grp #btns:hover
+{
+    cursor: pointer;
+    background: #4c60fc;
+}
+
+
