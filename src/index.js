@@ -14,6 +14,7 @@ const auth = require("./middleware/auth");
 const blogs = require("./models/blogs");
 const mongooes = require("mongoose")
 const AddQuery = require("./models/Query")
+const contact = require("./models/contact")
 
 const template_path = path.join(__dirname,"../templates/views")
 const partials_path = path.join(__dirname,"../templates/partials")
@@ -121,8 +122,8 @@ app.get("/update", auth, (req,res)=>{
 //     })
 // })
 app.get("/Community", auth, async (req, res) => {
-    try {
-        const result = await AddQuery.find({ Email: req.session.email }).sort({data: -1})
+    try {//{ Email: req.session.email }
+        const result = await AddQuery.find().sort({data: -1})
         console.log("Query Data:", result);
         res.render("Community", {
             user: req.session.name,
@@ -335,7 +336,7 @@ app.post("/Query",auth,async (req,res)=>{
             imagename: req.user.imagename
         })
         const saved = await QueryDoc.save();
-        const result = await AddQuery.find({Email:req.session.email}).sort({date: -1})
+        const result = await AddQuery.find().sort({date: -1})
         console.log(saved)
         res.render("Community",{
             user: req.session.name, 
@@ -354,14 +355,18 @@ app.get('/profile/:_id',auth, async (req, res) => {
     try{
         const docId1 = req.params._id;
         const docId = docId1.replace(':', '');
-        const result1 = await blogs.find({_id:docId})
         const result2 = await blogs.findOne({_id:docId})
+        const result1 = await blogs.find({Email:result2.Email})
+        console.log("Result2 is: "+result2)
+        console.log("Result2 is: "+result1)
+        req.session.opimg = result2.imagename
         res.render("otherprofile",{
             user: req.session.name, 
             pimg:  req.session.pimg,
             email: req.session.email,
             data2: result1,
-            data3: result2
+            data3: result2,
+            opimg: req.session.opimg
         })
     }catch(e){
         console.log(e);
@@ -432,6 +437,32 @@ app.post("/updateprofile",upload.single("imagename"),auth,async(req,res)=>{
         console.log(e)
     }
 })
+
+app.get("/contact",(req,res)=>{
+    if (req.session.userDetails) {
+        res.render('contact', { Name: "Hi-"+req.session.userDetails });
+    }else{
+        res.render("contact")
+    }
+})
+
+app.post("/contact", auth, async (req,res)=>{
+    try{
+        const ContactDoc = new contact({
+            Email : req.user.Email,
+            textsms : req.body.textsms
+        })
+        const sms = await ContactDoc.save();
+        console.log("Massege sent successfully")
+        res.render("index",{
+            Name : "Hi-"+req.session.userDetails
+        })
+    }catch(e){
+        // res.status(500).send("<h1>Eroor found</h1>");
+        console.log(e)
+    }
+})
+
 
 
 app.listen(port,(err)=>{
