@@ -19,11 +19,13 @@
 <body>
     <div class="main_div">
         {{>navbar}}
-        <div class="container">
-            <form action="/contact" method="post" class="ContactForm">
-                <h1 class="contactus-heading">Contact Us</h1>
-                <textarea name="textsms" class="feedback-input" placeholder="Enter Your Message" required></textarea>
-                <input type="submit" value=Send">
+        <div class="container1111">
+            <form action="/contact" method="post">
+                <h1>Contact Us</h1>
+                <div class="in_grp">
+                    <textarea name="textsms" class="feedback-input" placeholder="Enter Your Message" required></textarea>
+                    <input type="submit" value="Send" id="btns">
+                </div>
             </form>
         </div>
         {{>footer}}
