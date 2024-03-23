@@ -15,6 +15,8 @@ const blogs = require("./models/blogs");
 const mongooes = require("mongoose")
 const AddQuery = require("./models/Query")
 const contact = require("./models/contact")
+const contest = require("./models/Contest")
+const ans1 = require("./models/qna")
 
 const template_path = path.join(__dirname,"../templates/views")
 const partials_path = path.join(__dirname,"../templates/partials")
@@ -112,6 +114,19 @@ app.get("/update", auth, (req,res)=>{
         email: req.session.email
     })
 })
+app.get("/qna", auth,async (req,res)=>{
+    try{
+        const records = await AddQuery.find().sort({date: -1})
+        res.render("QNA",{
+            user: req.session.name, 
+            pimg:  req.session.pimg, 
+            email: req.session.email,
+            qnar: records
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
 // app.get("/Community", auth,async (req,res)=>{
 //     const result = await AddQuery.findOne({Email:req.session.email})
 //     res.render("Community",{
@@ -123,7 +138,7 @@ app.get("/update", auth, (req,res)=>{
 // })
 app.get("/Community", auth, async (req, res) => {
     try {//{ Email: req.session.email }
-        const result = await AddQuery.find().sort({data: -1})
+        const result = await AddQuery.find({ Email: req.session.email }).sort({data: -1})
         console.log("Query Data:", result);
         res.render("Community", {
             user: req.session.name,
@@ -336,7 +351,7 @@ app.post("/Query",auth,async (req,res)=>{
             imagename: req.user.imagename
         })
         const saved = await QueryDoc.save();
-        const result = await AddQuery.find().sort({date: -1})
+        const result = await AddQuery.find({ Email: req.session.email }).sort({date: -1})
         console.log(saved)
         res.render("Community",{
             user: req.session.name, 
@@ -383,6 +398,18 @@ app.get('/profile1',auth, async (req, res) => {
         console.log(e);
     }
 });
+app.get('/contact',auth, async (req, res) => {
+    try{
+        res.render("Contact",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email
+        })
+    }catch(e){
+        console.log(e);
+    }
+});
+
 
 
 
@@ -438,13 +465,6 @@ app.post("/updateprofile",upload.single("imagename"),auth,async(req,res)=>{
     }
 })
 
-app.get("/contact",(req,res)=>{
-    if (req.session.userDetails) {
-        res.render('contact', { Name: "Hi-"+req.session.userDetails });
-    }else{
-        res.render("contact")
-    }
-})
 
 app.post("/contact", auth, async (req,res)=>{
     try{
@@ -453,9 +473,11 @@ app.post("/contact", auth, async (req,res)=>{
             textsms : req.body.textsms
         })
         const sms = await ContactDoc.save();
-        console.log("Massege sent successfully")
+        console.log("Massege sent successfully:"+sms)
         res.render("index",{
-            Name : "Hi-"+req.session.userDetails
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email
         })
     }catch(e){
         // res.status(500).send("<h1>Eroor found</h1>");
@@ -463,6 +485,106 @@ app.post("/contact", auth, async (req,res)=>{
     }
 })
 
+
+app.get("/signup1",auth,async (req,res)=>{
+    try{
+        const record = await women.findOne({Email: req.session.email})
+        res.render("signup",{
+            user: req.session.name, 
+            pimg:  req.session.pimg, 
+            email: req.session.email,
+            alert5: record
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
+  
+app.post("/registercontest",auth,async (req,res)=>{
+    try{
+        const contestdoc = new contest({
+            Name: req.user.Name,
+            Email: req.user.Email,
+            Phone: req.body.Phone,
+            Age: req.body.Age,
+            Address: req.body.Address,
+            Hearing: req.body.Hearing,
+            Area: req.body.Area,
+            Comments: req.body.Comments
+        })
+        const saved = await contestdoc.save()
+        console.log(saved)
+        res.render("index",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
+
+
+app.post('/sendqna',auth, async (req, res) => {
+    try{
+        const ansdoc = new ans1({
+            Name: req.user.Name,
+            Email: req.user.Email,
+            imagename: req.user.imagename,
+            Answer: req.body.Answer
+        })
+        const records = await AddQuery.find().sort({date: -1})
+        const saved = await ansdoc.save();
+        console.log(saved) 
+        res.render("QNA",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email,
+            qnar: records,
+            sms1: true
+        })
+    }catch(e){
+        console.log(e);
+    }
+});
+
+app.get("/seeans",auth,async (req,res)=>{
+    try{
+        const ansr = await ans1.find().sort({data: -1})
+        res.render("QNA2",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email,
+            ansr1: ansr
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
+
+app.get("/seecontest",auth,async (req,res)=>{
+    try{
+        res.render("contests",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
+app.get("/seecontest1",auth,async (req,res)=>{
+    try{
+        res.render("contests",{
+            user: req.session.name, 
+            pimg:  req.session.pimg,
+            email: req.session.email,
+            p1: true
+        })
+    }catch(e){
+        console.log(e);
+    }
+})
 
 
 app.listen(port,(err)=>{

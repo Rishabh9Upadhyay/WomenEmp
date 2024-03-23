@@ -22,7 +22,9 @@ const auth = async (req, res, next) => {
         next();
     } catch (e) {
         console.error("Error in authentication:", e);
-        res.render("signin");
+        res.render("signin",{
+            request1: true
+        });
     }
 };
 
